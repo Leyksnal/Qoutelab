@@ -2,22 +2,17 @@ import React from 'react'
 import QouteHeader from './components/QouteHeader/QouteHeader'
 import styled from 'styled-components'
 import QoutePhase from './components/QoutePhase/QoutePhase';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import QoutePost from './components/QoutePost/QoutePost';
 
 export default function App() {
   return (
-    <Container>
+    <BrowserRouter>
       <QouteHeader/>
-      <QoutePhase/>
-    </Container>
+        <Routes>
+          <Route path='/' element={<QoutePhase/>}/>
+          <Route path='/post' element={<QoutePost/>}/>
+        </Routes>
+    </BrowserRouter>
   )
 }
-
-
-const Container = styled.div`
-background: rgb(22,26,66);
-background: radial-gradient(circle, rgba(22,26,66,1) 0%, rgba(16,18,34,1) 24%, rgba(13,16,41,1) 48%, rgba(30,35,84,1) 74%, rgba(22,26,66,1) 100%);
-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-`;

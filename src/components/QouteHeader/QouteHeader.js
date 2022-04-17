@@ -15,7 +15,6 @@ export default function QouteHeader() {
   )
 }
 
-
 const Container = styled.div`
     height: 70px;
     display: flex;
@@ -32,6 +31,6 @@ const Wrapper = styled.div`
 
     span{
         font-size: 2rem;
-        font-family: Lobster;
+        font-family: 'Lobster';
     }
 `;

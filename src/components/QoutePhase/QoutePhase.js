@@ -1,19 +1,31 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
 export default function QoutePhase() {
   return (
     <>
+    <Wall>
         <Container>
             <Wrapper>
                 <textarea name="" id="" cols="30" rows="10" placeholder='Qoute'></textarea>
                 <input type="text" placeholder='Author' />
-                <button>Post</button>
+                <Link to={'/post'}><Button>Post</Button></Link>
             </Wrapper>
         </Container>
+    </Wall>
     </>
   )
 }
+
+const Wall = styled.div`
+background: rgb(22,26,66);
+background: radial-gradient(circle, rgba(22,26,66,1) 0%, rgba(16,18,34,1) 24%, rgba(13,16,41,1) 48%, rgba(30,35,84,1) 74%, rgba(22,26,66,1) 100%);
+height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+`;
 
 
 const Container = styled.div`
@@ -54,23 +66,23 @@ const Wrapper = styled.div`
         color: #0D1117;
         border-radius: 8px;
     }
+`;
 
-    button{
-        margin-top: 15px;
-        width: 100px;
-        height: 40px;
-        background-color: #1c51aa;
-        outline: none;
-        border: none;
-        border-radius: 10px;
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #fff;
-        transition: all 400ms;
+const Button = styled.button`
+    margin-top: 15px;
+    width: 100px;
+    height: 40px;
+    background-color: #1c51aa;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    transition: all 400ms;
 
-        :hover{
-            background-color: #0B0D21;
-            cursor: pointer;
-        }
+    :hover{
+        background-color: #0B0D21;
+        cursor: pointer;
     }
 `;
