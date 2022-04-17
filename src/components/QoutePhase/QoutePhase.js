@@ -1,16 +1,38 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
+import { QouteContext } from '../QouteState/QouteState';
 
 export default function QoutePhase() {
+
+    const { qouteFrame, setQouteFrame} = useContext(QouteContext)
+
+    const [textArea, setTextArea] = useState()
+    const [input, setInput] = useState()
+
+    const action =()=>{
+        const data ={
+            id: Math.ceil(Math.random() * 1000),
+            qoute: textArea,
+            author: input
+        }
+
+        setQouteFrame([...qouteFrame, data]);
+        localStorage.setItem("QouteEntry", JSON.stringify(qouteFrame))
+    }
+
   return (
     <>
     <Wall>
         <Container>
             <Wrapper>
-                <textarea name="" id="" cols="30" rows="10" placeholder='Qoute'></textarea>
-                <input type="text" placeholder='Author' />
-                <Link to={'/post'}><Button>Post</Button></Link>
+                <textarea name="" id="" cols="30" rows="10" placeholder='Qoute' value={textArea} onChange={(e) =>{
+                    setTextArea(e.target.value)
+                }}></textarea>
+                <input type="text" placeholder='Author' value={input} onChange={(e) =>{
+                    setInput(e.target.value)
+                }}/>
+                <Link to={'/post'}><Button onClick={action}>Post</Button></Link>
             </Wrapper>
         </Container>
     </Wall>
@@ -65,10 +87,13 @@ const Wrapper = styled.div`
         font-weight: 600;
         color: #0D1117;
         border-radius: 8px;
+        outline: none;
+        border: none;
     }
 `;
 
 const Button = styled.button`
+    text-decoration: none;
     margin-top: 15px;
     width: 100px;
     height: 40px;

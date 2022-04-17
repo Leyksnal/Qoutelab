@@ -1,7 +1,13 @@
-import React from 'react'
+import React, {createContext, useEffect, useState} from 'react'
 
-export default function QouteState() {
-  return (
-    <div>QouteState</div>
-  )
+
+export const QouteContext = createContext();
+
+export const QouteState = ({children})=>{
+
+    const [qouteFrame, setQouteFrame] = useState([])
+
+    return(
+        <QouteContext.Provider value={{qouteFrame, setQouteFrame}}>{children}</QouteContext.Provider>
+    )
 }
